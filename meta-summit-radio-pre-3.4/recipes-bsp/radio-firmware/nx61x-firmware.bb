@@ -1,3 +1,92 @@
-SUMMARY = "Firmware for the Sona NX611 SIP, 1216, and 2230 modules"
+SUMMARY = "NX61x Firmware SDIO-UART"
+DESCRIPTION = "NX61x Firmware for SDIO-UART modules, including 1216, 2230, SIP and 1218 variants."
 
-require radio-firmware-nx.inc
+DESCRIPTION_${PN}-1216-btattach = " \
+    NX61x SDIO-UART firmware for 1216, 2230, SIP modules with \
+    both Wi-Fi and Bluetooth firmwares loaded through Wi-Fi interface \
+    by the Wi-FI driver. Bluetooth support is initiated by launching \
+    btattach utility. \
+    "
+
+DESCRIPTION_${PN}-1218-btattach = " \
+    NX61x SDIO-UART firmware for 1218 modules with \
+    both Wi-Fi and Bluetooth firmwares loaded through Wi-Fi interface. \
+    by the Wi-FI driver. Bluetooth support is initiated by launching \
+    btattach utility. \
+    "
+
+DESCRIPTION_${PN}-1216-serdev = " \
+    NX61x SDIO-UART firmware for 1216, 2230, SIP modules with \
+    Wi-Fi and Bluetooth firmwares loaded independently by appropriate \
+    interface drivers. Bluetooth support initiated by configuring serdev \
+    on serial port in device tree. \
+    "
+
+DESCRIPTION_${PN}-1218-serdev = " \
+    NX61x SDIO-UART firmware for 1218 modules with \
+    Wi-Fi and Bluetooth firmwares loaded independently by appropriate \
+    interface drivers. Bluetooth support initiated by configuring serdev \
+    on serial port in device tree. \
+    "
+
+LICENSE += "& NXP2"
+NO_GENERIC_LICENSE[NXP2] = "LICENSE.nxp2"
+LIC_FILES_CHKSUM += "file://LICENSE.nxp2;md5=7b112d07b0616149941639c05f68f431"
+
+require radio-firmware.inc
+require radio-stack-version.inc
+
+SRC_URI = "\
+    ${SUMMIT_URI}/summit-${BPN}-${PV}.tar.bz2;name=${BPN} \
+    ${SUMMIT_URI}/summit-nx61x-1218-firmware-${PV}.tar.bz2;name=nx61x-1218-firmware \
+    "
+
+do_install_append() {
+    install -d  "${D}${sysconfdir}/modprobe.d"
+    echo "options moal mod_para=nxp/wifi_prod_params.conf" > "${D}${sysconfdir}/modprobe.d/moal-btattach.conf"
+    echo "options moal mod_para=nxp/wifi_prod_serdev_params.conf" > "${D}${sysconfdir}/modprobe.d/moal-serdev.conf"
+}
+
+# Internal support packages
+PACKAGES =+ " \
+    ${PN}-firmware-btattach \
+    ${PN}-firmware-serdev \
+    ${PN}-1216-power-tables \
+    ${PN}-1218-power-tables \
+    "
+
+FILES_${PN}-firmware-btattach = " \
+    ${libdir}/firmware/nxp/sduart_* \
+    ${libdir}/firmware/nxp/wifi_prod_params.conf \
+    ${sysconfdir}/modprobe.d/moal-btattach.conf \
+    "
+
+FILES_${PN}-firmware-serdev = " \
+    ${libdir}/firmware/nxp/sd_* \
+    ${libdir}/firmware/nxp/uart* \
+    ${libdir}/firmware/nxp/wifi_prod_serdev_params.conf \
+    ${sysconfdir}/modprobe.d/moal-serdev.conf \
+    "
+
+FILES_${PN} = ""
+
+FILES_${PN}-1216-power-tables = "${libdir}/firmware/nxp/rgpower*"
+FILES_${PN}-1218-power-tables = "${libdir}/firmware/nxp/1218_rgpower*"
+
+# User installed packages
+PACKAGES =+ " \
+    ${PN}-1216-btattach \
+    ${PN}-1218-btattach \
+    ${PN}-1216-serdev \
+    ${PN}-1218-serdev \
+    "
+
+RDEPENDS_${PN}-1216-btattach = "${PN}-firmware-btattach ${PN}-1216-power-tables"
+RDEPENDS_${PN}-1218-btattach = "${PN}-firmware-btattach ${PN}-1218-power-tables"
+RDEPENDS_${PN}-1216-serdev = "${PN}-firmware-serdev ${PN}-1216-power-tables"
+RDEPENDS_${PN}-1218-serdev = "${PN}-firmware-serdev ${PN}-1218-power-tables"
+
+RCONFLICTS_${PN}-1216-btattach = "${PN}-1216-serdev ${PN}-1218-serdev"
+RCONFLICTS_${PN}-1218-btattach = "${PN}-1216-serdev ${PN}-1218-serdev"
+RCONFLICTS_${PN}-1216-serdev = "${PN}-1216-btattach ${PN}-1218-btattach"
+RCONFLICTS_${PN}-1218-serdev = "${PN}-1216-btattach ${PN}-1218-btattach"
