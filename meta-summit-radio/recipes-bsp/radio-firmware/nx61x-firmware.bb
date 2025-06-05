@@ -56,7 +56,10 @@ FILES:${PN}-1216-power-tables = "${libdir}/firmware/nxp/rgpower*"
 PACKAGES =+ " \
     ${PN}-1216-btattach \
     ${PN}-1216-serdev \
+    ${PN}-mfg \
     "
+
+FILES:${PN}-mfg = "${libdir}/firmware/nxp/wifi_mfg*"
 
 ALLOW_EMPTY:${PN}-1216-btattach = "1"
 ALLOW_EMPTY:${PN}-1216-serdev = "1"
