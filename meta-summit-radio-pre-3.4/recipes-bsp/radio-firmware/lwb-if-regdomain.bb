@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/MIT;md5=0835ad
 LWB_REGDOMAIN ?= ""
 
 do_install() {
-    if [ ! -z "${LWB_REGDOMAIN}" ]; then
+    if [ -n "${LWB_REGDOMAIN}" ]; then
         install -d  "${D}${sysconfdir}/modprobe.d"
         echo "options brcmfmac regdomain=\"${LWB_REGDOMAIN}\"" > "${D}${sysconfdir}/modprobe.d/brcmfmac_regd.conf"
     fi

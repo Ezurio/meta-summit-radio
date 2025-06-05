@@ -36,8 +36,7 @@ LIC_FILES_CHKSUM += "file://LICENSE.nxp2;md5=7b112d07b0616149941639c05f68f431"
 require radio-firmware.inc
 require radio-stack-version.inc
 
-SRC_URI = "\
-    ${SUMMIT_URI}/summit-${BPN}-${PV}.tar.bz2;name=${BPN} \
+SRC_URI += "\
     ${SUMMIT_URI}/summit-nx61x-1218-firmware-${PV}.tar.bz2;name=nx61x-1218-firmware \
     "
 
