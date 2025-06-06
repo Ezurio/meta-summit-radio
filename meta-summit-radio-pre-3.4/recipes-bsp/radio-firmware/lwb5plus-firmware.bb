@@ -8,6 +8,7 @@ SUMMARY_lwb5plus-usb-sa-firmware = "Summit firmware for the LWB5+ USB module wit
 SUMMARY_lwb5plus-usb-sa-m2-firmware = "Summit firmware for the LWB5+ USB module with single antenna M.2"
 
 require radio-firmware-lwb.inc
+inherit update-alternatives
 
 SRC_URI = "\
     ${SUMMIT_URI}/summit-lwb5plus-sdio-div-firmware-${PV}.tar.bz2;name=lwb5plus-sdio-div-firmware  \
@@ -91,7 +92,6 @@ FILES_lwb5plus-usb-sa-firmware = "\
 FILES_lwb5plus-usb-sa-m2-firmware = "\
     ${libdir}/firmware/brcm/brcmfmac4373-usb-sa-m2-prod_*.bin \
     ${libdir}/firmware/brcm/BCM4373A0-usb-sa-m2_*.hcd \
-    ${libdir}/firmware/brcm/brcmfmac4373-sa-m2.txt \
     "
 
 RDEPENDS_lwb5plus-sdio-div-firmware += "${PN}-sdio-fw ${PN}-div-clm"
@@ -118,28 +118,30 @@ ALTERNATIVE_LINK_NAME[lwb5plus-usb-fw] = "${libdir}/firmware/brcm/brcmfmac4373-u
 ALTERNATIVE_LINK_NAME[lwb5plus-usb-clm] = "${libdir}/firmware/brcm/brcmfmac4373-usb-clm.clm_blob"
 
 ALTERNATIVE_PRIORITY_lwb5plus-sdio-div-firmware[lwb5plus-sdio-bt] = "100"
-ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-bt] = "90"
-ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-bt] = "80"
-ALTERNATIVE_PRIORITY_lwb5plus-usb-div-firmware[lwb5plus-usb-bt] = "100"
-ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-firmware[lwb5plus-usb-bt] = "90"
-ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-bt] = "80"
-
 ALTERNATIVE_PRIORITY_lwb5plus-sdio-div-firmware[lwb5plus-nvram] = "100"
-ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-firmware[lwb5plus-nvram] = "90"
-ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-m2-firmware[lwb5plus-nvram] = "80"
-
 ALTERNATIVE_PRIORITY_lwb5plus-sdio-div-firmware[lwb5plus-sdio-fw] = "100"
-ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-fw] = "90"
-ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-fw] = "80"
-ALTERNATIVE_PRIORITY_lwb5plus-usb-div-firmware[lwb5plus-usb-fw] = "100"
-ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-firmware[lwb5plus-usb-fw] = "90"
-ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-fw] = "80"
-
 ALTERNATIVE_PRIORITY_lwb5plus-sdio-div-firmware[lwb5plus-sdio-clm] = "100"
+
+ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-bt] = "90"
+ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-firmware[lwb5plus-nvram] = "90"
+ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-fw] = "90"
 ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-clm] = "90"
+
+ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-bt] = "80"
+ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-m2-firmware[lwb5plus-nvram] = "80"
+ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-fw] = "80"
 ALTERNATIVE_PRIORITY_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-clm] = "80"
-ALTERNATIVE_PRIORITY_lwb5plus-usb-div-firmware[lwb5plus-usb-clm] = "100"
-ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-firmware[lwb5plus-usb-clm] = "90"
+
+ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-firmware[lwb5plus-usb-bt] = "100"
+ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-firmware[lwb5plus-usb-fw] = "100"
+ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-firmware[lwb5plus-usb-clm] = "100"
+
+ALTERNATIVE_PRIORITY_lwb5plus-usb-div-firmware[lwb5plus-usb-bt] = "90"
+ALTERNATIVE_PRIORITY_lwb5plus-usb-div-firmware[lwb5plus-usb-fw] = "90"
+ALTERNATIVE_PRIORITY_lwb5plus-usb-div-firmware[lwb5plus-usb-clm] = "90"
+
+ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-bt] = "80"
+ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-fw] = "80"
 ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-clm] = "80"
 
 def getfile(d, p):
