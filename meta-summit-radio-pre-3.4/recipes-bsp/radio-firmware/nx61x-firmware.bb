@@ -1,14 +1,14 @@
 SUMMARY = "NX61x Firmware SDIO-UART"
 DESCRIPTION = "NX61x Firmware for SDIO-UART modules, including 1216, 2230, SIP and 1218 variants."
 
-DESCRIPTION:${PN}-1216-btattach = " \
+DESCRIPTION_${PN}-1216-btattach = " \
     NX61x SDIO-UART firmware for 1216, 2230, SIP modules with \
     both Wi-Fi and Bluetooth firmwares loaded through Wi-Fi interface \
     by the Wi-FI driver. Bluetooth support is initiated by launching \
     btattach utility. \
     "
 
-DESCRIPTION:${PN}-1216-serdev = " \
+DESCRIPTION_${PN}-1216-serdev = " \
     NX61x SDIO-UART firmware for 1216, 2230, SIP modules with \
     Wi-Fi and Bluetooth firmwares loaded independently by appropriate \
     interface drivers. Bluetooth support initiated by configuring serdev \
@@ -22,7 +22,7 @@ LIC_FILES_CHKSUM += "file://LICENSE.nxp2;md5=7b112d07b0616149941639c05f68f431"
 require radio-firmware.inc
 require radio-stack-nx-version.inc
 
-do_install:append() {
+do_install_append() {
     install -d  "${D}${sysconfdir}/modprobe.d"
     echo "options moal mod_para=nxp/wifi_prod_params.conf" > "${D}${sysconfdir}/modprobe.d/moal-btattach.conf"
     echo "options moal mod_para=nxp/wifi_prod_serdev_params.conf" > "${D}${sysconfdir}/modprobe.d/moal-serdev.conf"
