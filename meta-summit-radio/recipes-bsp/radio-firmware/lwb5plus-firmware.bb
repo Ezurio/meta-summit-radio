@@ -43,7 +43,7 @@ PACKAGES =+ " \
     lwb5plus-usb-sa-m2-firmware \
     "
 
-# Internal packages 
+# Internal packages
 FILES:${PN} = ""
 
 FILES:${PN}-sdio-fw = "\
