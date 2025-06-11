@@ -110,12 +110,12 @@ ALTERNATIVE:lwb5plus-usb-sa-m2-firmware = "lwb5plus-usb-bt lwb5plus-usb-fw lwb5p
 
 ALTERNATIVE_LINK_NAME[lwb5plus-sdio-bt] = "${libdir}/firmware/brcm/BCM4373A0.hcd"
 ALTERNATIVE_LINK_NAME[lwb5plus-nvram] = "${libdir}/firmware/brcm/brcmfmac4373-sdio.txt"
-ALTERNATIVE_LINK_NAME[lwb5plus-sdio-fw] = "${libdir}/firmware/brcm/brcmfmac4373-sdio-prod.bin"
-ALTERNATIVE_LINK_NAME[lwb5plus-sdio-clm] = "${libdir}/firmware/brcm/brcmfmac4373-sdio-clm.clm_blob"
+ALTERNATIVE_LINK_NAME[lwb5plus-sdio-fw] = "${libdir}/firmware/brcm/brcmfmac4373-sdio.bin"
+ALTERNATIVE_LINK_NAME[lwb5plus-sdio-clm] = "${libdir}/firmware/brcm/brcmfmac4373-sdio.clm_blob"
 
 ALTERNATIVE_LINK_NAME[lwb5plus-usb-bt] = "${libdir}/firmware/brcm/BCM4373A0-04b4-640c.hcd"
-ALTERNATIVE_LINK_NAME[lwb5plus-usb-fw] = "${libdir}/firmware/brcm/brcmfmac4373-usb-prod.bin"
-ALTERNATIVE_LINK_NAME[lwb5plus-usb-clm] = "${libdir}/firmware/brcm/brcmfmac4373-usb-clm.clm_blob"
+ALTERNATIVE_LINK_NAME[lwb5plus-usb-fw] = "${libdir}/firmware/brcm/brcmfmac4373.bin"
+ALTERNATIVE_LINK_NAME[lwb5plus-usb-clm] = "${libdir}/firmware/brcm/brcmfmac4373.clm_blob"
 
 ALTERNATIVE_PRIORITY_lwb5plus-sdio-div-firmware[lwb5plus-sdio-bt] = "100"
 ALTERNATIVE_PRIORITY_lwb5plus-sdio-div-firmware[lwb5plus-nvram] = "100"
