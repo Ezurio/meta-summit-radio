@@ -55,22 +55,22 @@ PACKAGES =+ " \
     "
 
 FILES:${PN}-firmware-btattach = " \
-    ${libdir}/firmware/nxp/sduart_* \
-    ${libdir}/firmware/nxp/wifi_prod_params.conf \
+    ${nonarch_base_libdir}/firmware/nxp/sduart_* \
+    ${nonarch_base_libdir}/firmware/nxp/wifi_prod_params.conf \
     ${sysconfdir}/modprobe.d/moal-btattach.conf \
     "
 
 FILES:${PN}-firmware-serdev = " \
-    ${libdir}/firmware/nxp/sd_* \
-    ${libdir}/firmware/nxp/uart* \
-    ${libdir}/firmware/nxp/wifi_prod_serdev_params.conf \
+    ${nonarch_base_libdir}/firmware/nxp/sd_* \
+    ${nonarch_base_libdir}/firmware/nxp/uart* \
+    ${nonarch_base_libdir}/firmware/nxp/wifi_prod_serdev_params.conf \
     ${sysconfdir}/modprobe.d/moal-serdev.conf \
     "
 
 FILES:${PN} = ""
 
-FILES:${PN}-1216-power-tables = "${libdir}/firmware/nxp/rgpower*"
-FILES:${PN}-1218-power-tables = "${libdir}/firmware/nxp/1218_rgpower*"
+FILES:${PN}-1216-power-tables = "${nonarch_base_libdir}/firmware/nxp/rgpower*"
+FILES:${PN}-1218-power-tables = "${nonarch_base_libdir}/firmware/nxp/1218_rgpower*"
 
 # User installed packages
 PACKAGES =+ " \

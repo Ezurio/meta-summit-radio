@@ -19,24 +19,24 @@ PACKAGES =+ " \
 FILES:${PN} = ""
 
 FILES:${PN}-if573-fw = "\
-    ${libdir}/firmware/cypress/cyfmac55572-if573.txt \
-    ${libdir}/firmware/cypress/cyfmac55572-if573_*.clm_blob \
-    ${libdir}/firmware/cypress/CYW55560A1_*.hcd \
-    ${libdir}/firmware/brcm/CYW55560A1.hcd \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-if573.txt \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-if573_*.clm_blob \
+    ${nonarch_base_libdir}/firmware/cypress/CYW55560A1_*.hcd \
+    ${nonarch_base_libdir}/firmware/brcm/CYW55560A1.hcd \
     "
 
 FILES:if573-sdio-firmware = "\
-    ${libdir}/firmware/cypress/cyfmac55572-sdio-prod_*.trxse \
-    ${libdir}/firmware/cypress/cyfmac55572-sdio.clm_blob \
-    ${libdir}/firmware/cypress/cyfmac55572-sdio.trxse \
-    ${libdir}/firmware/cypress/cyfmac55572-sdio.txt \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-sdio-prod_*.trxse \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-sdio.clm_blob \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-sdio.trxse \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-sdio.txt \
     "
 
 FILES:if573-pcie-firmware = "\
-    ${libdir}/firmware/cypress/cyfmac55572-pcie-prod_*.trxse \
-    ${libdir}/firmware/cypress/cyfmac55572-pcie.clm_blob \
-    ${libdir}/firmware/cypress/cyfmac55572-pcie.trxse \
-    ${libdir}/firmware/cypress/cyfmac55572-pcie.txt \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-pcie-prod_*.trxse \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-pcie.clm_blob \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-pcie.trxse \
+    ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-pcie.txt \
     "
 
 RDEPENDS:if573-sdio-firmware += "${PN}-if573-fw"
