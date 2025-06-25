@@ -42,9 +42,15 @@ RPROVIDES:${PN}-cli  += "wpa-supplicant-cli"
 RREPLACES:${PN}-cli  += "wpa-supplicant-cli"
 RCONFLICTS:${PN}-cli += "wpa-supplicant-cli"
 
-PACKAGES:prepend = "${PN}-passphrase ${PN}-cli "
+RPROVIDES:${PN}-lib  += "wpa-supplicant-lib"
+RREPLACES:${PN}-lib  += "wpa-supplicant-lib"
+RCONFLICTS:${PN}-lib += "wpa-supplicant-lib"
+
+PACKAGES:prepend = "${PN}-passphrase ${PN}-cli ${PN}-lib "
+
 FILES:${PN}-passphrase = "${bindir}/wpa_passphrase"
 FILES:${PN}-cli = "${sbindir}/wpa_cli"
+FILES:${PN}-lib = "${libdir}/libwpa_client*"
 FILES:${PN} += "${systemd_unitdir}/system/*"
 
 SOLIBS = ".so*"
@@ -68,6 +74,7 @@ SUPP_DBUS_P2P_ENABLE ?= "0"
 do_install () {
     install -m 0755 -D -t "${D}${sbindir}" wpa_cli sdcsupp
     install -m 0755 -D -t "${D}${bindir}" wpa_passphrase
+	install -m 0644 -D -t "${D}${includedir}" "${S}/src/common/wpa_ctrl.h"
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0644 -D -t "${D}${systemd_unitdir}/system" systemd/*.service
