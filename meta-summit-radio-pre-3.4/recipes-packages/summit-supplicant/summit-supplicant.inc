@@ -50,11 +50,8 @@ PACKAGES_prepend = "${PN}-passphrase ${PN}-cli ${PN}-lib "
 
 FILES_${PN}-passphrase = "${bindir}/wpa_passphrase"
 FILES_${PN}-cli = "${sbindir}/wpa_cli"
-FILES_${PN}-lib = "${libdir}/libwpa_client*"
-FILES_${PN} += "${systemd_unitdir}/system/*"
-
-SOLIBS = ".so*"
-FILES_SOLIBSDEV = ""
+FILES_${PN}-lib = "${libdir}/libwpa_client.so.1"
+FILES_${PN} += "${systemd_unitdir}/system/* ${datadir}/dbus-1/* ${sysconfdir}/dbus-1/*"
 
 do_configure () {
     cp -f "${DEFCONFIG}" .config
@@ -65,6 +62,11 @@ do_configure () {
 
 do_compile_append () {
     ${OBJCOPY} wpa_supplicant sdcsupp
+
+    if [ -e libwpa_client.so ]; then
+        ${OBJCOPY} libwpa_client.so libwpa_client.so.1
+        ln -sf libwpa_client.so.1 libwpa_client.so
+    fi
 }
 
 EXTRA_OEMAKE = "'BINDIR=${sbindir}'"
@@ -74,14 +76,28 @@ SUPP_DBUS_P2P_ENABLE ?= "0"
 do_install () {
     install -m 0755 -D -t "${D}${sbindir}" wpa_cli sdcsupp
     install -m 0755 -D -t "${D}${bindir}" wpa_passphrase
-	install -m 0644 -D -t "${D}${includedir}" "${S}/src/common/wpa_ctrl.h"
+
+    if [ -e libwpa_client.so.1 ]; then
+        install -m 0644 -D -t "${D}${includedir}" "${S}/src/common/wpa_ctrl.h"
+        install -m 0644 -D -t "${D}${libdir}" libwpa_client.so.1
+        ln -sf libwpa_client.so.1 "${D}${libdir}/libwpa_client.so"
+    fi
+
+    if ${@bb.utils.contains('DEPENDS', 'dbus', 'true', 'false', d)}; then
+        install -m 0644 -D -t "${D}${sysconfdir}/dbus-1/system.d" dbus/dbus-wpa_supplicant.conf
+
+        if [ "${SUPP_DBUS_P2P_ENABLE}" = "0" ]; then
+            mkdir -p "${D}${sysconfdir}/wpa_supplicant"
+            echo "p2p_disabled=1" > "${D}${sysconfdir}/wpa_supplicant/dbus_overlay.conf"
+        fi
+    fi
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0644 -D -t "${D}${systemd_unitdir}/system" systemd/*.service
-    fi
-    if [ "${SUPP_DBUS_P2P_ENABLE}" = "0" ]; then
-        mkdir -p "${D}${sysconfdir}/wpa_supplicant"
-        echo "p2p_disabled=1" > "${D}${sysconfdir}/wpa_supplicant/dbus_overlay.conf"
+
+        if ${@bb.utils.contains('DEPENDS', 'dbus', 'true', 'false', d)}; then
+            install -m 0644 -D -t "${D}${datadir}/dbus-1/system-services" dbus/*.service
+        fi
     fi
 }
 

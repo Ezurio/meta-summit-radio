@@ -1,4 +1,8 @@
 SUMMARY = "Summit Supplicant"
 
-require summit-supplicant-modern.inc
+require summit-supplicant.inc
 require radio-stack-version.inc
+
+DEFCONFIG = "config_openssl"
+
+DEPENDS += "dbus"
