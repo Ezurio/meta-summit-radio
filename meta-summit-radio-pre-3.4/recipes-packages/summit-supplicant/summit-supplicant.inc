@@ -50,8 +50,10 @@ PACKAGES_prepend = "${PN}-passphrase ${PN}-cli ${PN}-lib "
 
 FILES_${PN}-passphrase = "${bindir}/wpa_passphrase"
 FILES_${PN}-cli = "${sbindir}/wpa_cli"
-FILES_${PN}-lib = "${libdir}/libwpa_client.so.1"
+FILES_${PN}-lib = "${libdir}/libwpa_client.so"
 FILES_${PN} += "${systemd_unitdir}/system/* ${datadir}/dbus-1/* ${sysconfdir}/dbus-1/*"
+
+RDEPENDS_${PN}-dev += "${PN}-lib"
 
 do_configure () {
     cp -f "${DEFCONFIG}" .config
@@ -62,11 +64,6 @@ do_configure () {
 
 do_compile_append () {
     ${OBJCOPY} wpa_supplicant sdcsupp
-
-    if [ -e libwpa_client.so ]; then
-        ${OBJCOPY} libwpa_client.so libwpa_client.so.1
-        ln -sf libwpa_client.so.1 libwpa_client.so
-    fi
 }
 
 EXTRA_OEMAKE = "'BINDIR=${sbindir}'"
@@ -79,8 +76,7 @@ do_install () {
 
     if [ -e libwpa_client.so.1 ]; then
         install -m 0644 -D -t "${D}${includedir}" "${S}/src/common/wpa_ctrl.h"
-        install -m 0644 -D -t "${D}${libdir}" libwpa_client.so.1
-        ln -sf libwpa_client.so.1 "${D}${libdir}/libwpa_client.so"
+        install -m 0644 -D -t "${D}${libdir}" libwpa_client.so
     fi
 
     if ${@bb.utils.contains('DEPENDS', 'dbus', 'true', 'false', d)}; then
