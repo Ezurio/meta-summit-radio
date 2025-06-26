@@ -74,7 +74,7 @@ do_install () {
     install -m 0755 -D -t "${D}${sbindir}" wpa_cli sdcsupp
     install -m 0755 -D -t "${D}${bindir}" wpa_passphrase
 
-    if [ -e libwpa_client.so.1 ]; then
+    if [ -e libwpa_client.so ]; then
         install -m 0644 -D -t "${D}${includedir}" "${S}/src/common/wpa_ctrl.h"
         install -m 0644 -D -t "${D}${libdir}" libwpa_client.so
     fi
