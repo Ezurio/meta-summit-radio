@@ -89,11 +89,12 @@ Integration notes:
      bitbake <image name>
 
  - The Summit supplicant is required for full functionality for all radios
-    - add the  "summit-supplicant-xxx" package to your image recipe
+    - add the  "summit-supplicant" package to your image recipe
     - add the following to your local.conf or <distro>.conf:
-        PREFERRED_RPROVIDER_wpa-supplicant = "summit-supplicant-xxx"
-        PREFERRED_RPROVIDER_wpa-supplicant-cli = "summit-supplicant-xxx"
-        PREFERRED_RPROVIDER_wpa-supplicant-passphrase = "summit-supplicant-xxx"
+        PREFERRED_RPROVIDER_wpa-supplicant = "summit-supplicant"
+        PREFERRED_RPROVIDER_wpa-supplicant-cli = "summit-supplicant"
+        PREFERRED_RPROVIDER_wpa-supplicant-passphrase = "summit-supplicant"
+        PREFERRED_RPROVIDER_wpa-supplicant-lib = "summit-supplicant"
 
  - Summit Supplicant Libs is required only if CCKM support is needed in the Summit Supplicant
 
@@ -110,7 +111,7 @@ Additional requirements for Yocto release 'zeus' (3.0) and later:
      be set to the upstream provider:
 		    PREFERRED_RPROVIDER_wireless-regdb-static = "wireless-regdb"
 
-- This layer provides a set of example image recipes that can be used as references
+ - This layer provides a set of example image recipes that can be used as references
 
 IF573, LWB, LWB+, LWB5+ driver common issues:
   - The regulatory domain must be specified in the platform based on the destination of the

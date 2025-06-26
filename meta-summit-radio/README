@@ -87,18 +87,19 @@ Integration notes:
      bitbake <image name>
 
  - The Summit supplicant is required for full functionality for all radios
-    - add the  "summit-supplicant-xxx" package to your image recipe
+    - add the  "summit-supplicant" package to your image recipe
     - add the following to your local.conf or <distro>.conf:
-        PREFERRED_RPROVIDER_wpa-supplicant = "summit-supplicant-xxx"
-        PREFERRED_RPROVIDER_wpa-supplicant-cli = "summit-supplicant-xxx"
-        PREFERRED_RPROVIDER_wpa-supplicant-passphrase = "summit-supplicant-xxx"
+        PREFERRED_RPROVIDER_wpa-supplicant = "summit-supplicant"
+        PREFERRED_RPROVIDER_wpa-supplicant-cli = "summit-supplicant"
+        PREFERRED_RPROVIDER_wpa-supplicant-passphrase = "summit-supplicant"
+        PREFERRED_RPROVIDER_wpa-supplicant-lib = "summit-supplicant"
 
  - Summit Supplicant Libs is required only if CCKM support is needed in the Summit Supplicant
 
  - Summit Network Manager is an optional component that enhances the functionality of the upstream
    to support features of the Summit supplicant
 
-  - wireless-regdb-static provider must be specified in local.conf or <distro>.conf
+ - wireless-regdb-static provider must be specified in local.conf or <distro>.conf
    - When using 60 Series firmware packages, the wireless-regdb-static provider must be set
      to the firmware package added to the image and used for the radio:
         PREFERRED_RPROVIDER_wireless-regdb-static = "<firmware package>"
@@ -106,7 +107,7 @@ Integration notes:
      be set to the upstream provider:
 		    PREFERRED_RPROVIDER_wireless-regdb-static = "wireless-regdb"
 
-- This layer provides a set of example image recipes that can be used as references
+ - This layer provides a set of example image recipes that can be used as references
 
 IF573, LWB, LWB+, LWB5+ driver common issues:
   - The regulatory domain must be specified in the platform based on the destination of the
