@@ -4,7 +4,7 @@ DESCRIPTION = "NX61x Firmware for SDIO-UART modules, including 1216, 2230, SIP a
 DESCRIPTION_${PN}-1216-btattach = " \
     NX61x SDIO-UART firmware for 1216, 2230, SIP modules with \
     both Wi-Fi and Bluetooth firmwares loaded through Wi-Fi interface \
-    by the Wi-FI driver. Bluetooth support is initiated by launching \
+    by the Wi-Fi driver. Bluetooth support is initiated by launching \
     btattach utility. \
     "
 
@@ -52,18 +52,26 @@ PACKAGES =+ " \
     ${PN}-firmware-serdev \
     ${PN}-1216-power-tables \
     ${PN}-1218-power-tables \
+    ${PN}-binaries \
+    ${PN}-conf-btattach \
+    ${PN}-conf-serdev \
     "
 
 FILES_${PN}-firmware-btattach = " \
     ${nonarch_base_libdir}/firmware/nxp/sduart_* \
     ${nonarch_base_libdir}/firmware/nxp/wifi_prod_params.conf \
-    ${sysconfdir}/modprobe.d/moal-btattach.conf \
     "
 
 FILES_${PN}-firmware-serdev = " \
     ${nonarch_base_libdir}/firmware/nxp/sd_* \
     ${nonarch_base_libdir}/firmware/nxp/uart* \
     ${nonarch_base_libdir}/firmware/nxp/wifi_prod_serdev_params.conf \
+    "
+
+FILES_${PN}-conf-btattach = " \
+    ${sysconfdir}/modprobe.d/moal-btattach.conf \
+    "
+FILES_${PN}-conf-serdev = " \
     ${sysconfdir}/modprobe.d/moal-serdev.conf \
     "
 
@@ -80,15 +88,17 @@ PACKAGES =+ " \
     ${PN}-1218-serdev \
     "
 
+ALLOW_EMPTY_${PN}-binaries = "1"
 ALLOW_EMPTY_${PN}-1216-btattach = "1"
 ALLOW_EMPTY_${PN}-1218-btattach = "1"
 ALLOW_EMPTY_${PN}-1216-serdev = "1"
 ALLOW_EMPTY_${PN}-1218-serdev = "1"
 
-RDEPENDS_${PN}-1216-btattach = "${PN}-firmware-btattach ${PN}-1216-power-tables"
-RDEPENDS_${PN}-1218-btattach = "${PN}-firmware-btattach ${PN}-1218-power-tables"
-RDEPENDS_${PN}-1216-serdev = "${PN}-firmware-serdev ${PN}-1216-power-tables"
-RDEPENDS_${PN}-1218-serdev = "${PN}-firmware-serdev ${PN}-1218-power-tables"
+RDEPENDS_${PN}-1216-btattach = "${PN}-firmware-btattach ${PN}-1216-power-tables ${PN}-conf-btattach"
+RDEPENDS_${PN}-1218-btattach = "${PN}-firmware-btattach ${PN}-1218-power-tables ${PN}-conf-btattach"
+RDEPENDS_${PN}-1216-serdev = "${PN}-firmware-serdev ${PN}-1216-power-tables ${PN}-conf-serdev"
+RDEPENDS_${PN}-1218-serdev = "${PN}-firmware-serdev ${PN}-1218-power-tables ${PN}-conf-serdev"
+RDEPENDS_${PN}-binaries = "${PN}-1216-power-tables ${PN}-1218-power-tables ${PN}-firmware-serdev ${PN}-firmware-btattach"
 
 RCONFLICTS_${PN}-1216-btattach = "${PN}-1216-serdev ${PN}-1218-serdev"
 RCONFLICTS_${PN}-1218-btattach = "${PN}-1216-serdev ${PN}-1218-serdev"
