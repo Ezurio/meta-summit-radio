@@ -59,7 +59,7 @@ PACKAGES =+ " \
     ${PN}-mfg \
     "
 
-FILES:${PN}-mfg = "${libdir}/firmware/nxp/wifi_mfg*"
+FILES:${PN}-mfg = "${nonarch_base_libdir}/firmware/nxp/wifi_mfg*"
 
 ALLOW_EMPTY:${PN}-1216-btattach = "1"
 ALLOW_EMPTY:${PN}-1216-serdev = "1"
