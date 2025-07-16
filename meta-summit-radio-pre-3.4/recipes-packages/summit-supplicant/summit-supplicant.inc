@@ -26,13 +26,19 @@ SRC_URI += "${SUMMIT_URI}/summit_supplicant-src-${PV}.tar.gz;name=summit-supplic
 S = "${WORKDIR}/summit_supplicant-${PV}"
 B = "${S}/wpa_supplicant"
 
+PROVIDES += "wpa-supplicant"
+
 RPROVIDES_${PN} += "wpa-supplicant"
 RREPLACES_${PN} += "wpa-supplicant"
 RCONFLICTS_${PN} += "wpa-supplicant"
 
-RPROVIDES_${PN} += "wpa-supplicant-dbg"
-RREPLACES_${PN} += "wpa-supplicant-dbg"
-RCONFLICTS_${PN} += "wpa-supplicant-dbg"
+RPROVIDES_${PN}-dbg += "wpa-supplicant-dbg"
+RREPLACES_${PN}-dbg += "wpa-supplicant-dbg"
+RCONFLICTS_${PN}-dbg += "wpa-supplicant-dbg"
+
+RPROVIDES_${PN}-dev += "wpa-supplicant-dev"
+RREPLACES_${PN}-dev += "wpa-supplicant-dev"
+RCONFLICTS_${PN}-dev += "wpa-supplicant-dev"
 
 RPROVIDES_${PN}-passphrase  += "wpa-supplicant-passphrase"
 RREPLACES_${PN}-passphrase  += "wpa-supplicant-passphrase"

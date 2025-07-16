@@ -205,9 +205,6 @@ RRECOMMENDS:${PN} += "\
     ${@bb.utils.contains('PACKAGECONFIG','ppp','${PN}-ppp','',d)} \
 "
 
-RCONFLICTS:${PN} = "connman networkmanager"
-RREPLACES:${PN} = "networkmanager"
-
 INITSCRIPT_NAME = "network-manager"
 SYSTEMD_SERVICE:${PN} = "\
     NetworkManager.service \
@@ -234,8 +231,11 @@ do_install:append() {
     fi
 }
 
+RCONFLICTS:${PN} = "connman"
 RDEPENDS:${PN} += "ethtool"
 RRECOMMENDS:${PN}-nmcli += "less"
+
+PROVIDES += "networkmanager"
 
 RPROVIDES:${PN} += "networkmanager"
 RREPLACES:${PN} += "networkmanager"
@@ -256,3 +256,47 @@ RCONFLICTS:${PN}-nmtui += "networkmanager-nmtui"
 RPROVIDES:${PN}-nmtui-doc += "networkmanager-nmtui-doc"
 RREPLACES:${PN}-nmtui-doc += "networkmanager-nmtui-doc"
 RCONFLICTS:${PN}-nmtui-doc += "networkmanager-nmtui-doc"
+
+RPROVIDES:${PN}-adsl += "networkmanager-adsl"
+RREPLACES:${PN}-adsl += "networkmanager-adsl"
+RCONFLICTS:${PN}-adsl += "networkmanager-adsl"
+
+RPROVIDES:${PN}-bluetooth += "networkmanager-bluetooth"
+RREPLACES:${PN}-bluetooth += "networkmanager-bluetooth"
+RCONFLICTS:${PN}-bluetooth += "networkmanager-bluetooth"
+
+RPROVIDES:${PN}-cloud-setup += "networkmanager-cloud-setup"
+RREPLACES:${PN}-cloud-setup += "networkmanager-cloud-setup"
+RCONFLICTS:${PN}-cloud-setup += "networkmanager-cloud-setup"
+
+RPROVIDES:${PN}-wifi += "networkmanager-wifi"
+RREPLACES:${PN}-wifi += "networkmanager-wifi"
+RCONFLICTS:${PN}-wifi += "networkmanager-wifi"
+
+RPROVIDES:${PN}-wwan += "networkmanager-wwan"
+RREPLACES:${PN}-wwan += "networkmanager-wwan"
+RCONFLICTS:${PN}-wwan += "networkmanager-wwan"
+
+RPROVIDES:${PN}-ovs += "networkmanager-ovs"
+RREPLACES:${PN}-ovs += "networkmanager-ovs"
+RCONFLICTS:${PN}-ovs += "networkmanager-ovs"
+
+RPROVIDES:${PN}-ppp += "networkmanager-ppp"
+RREPLACES:${PN}-ppp += "networkmanager-ppp"
+RCONFLICTS:${PN}-ppp += "networkmanager-ppp"
+
+RPROVIDES:${PN}-ovs-doc += "networkmanager-ovs-doc"
+RREPLACES:${PN}-ovs-doc += "networkmanager-ovs-doc"
+RCONFLICTS:${PN}-ovs-doc += "networkmanager-ovs-doc"
+
+RPROVIDES:${PN}-ppp-doc += "networkmanager-ppp-doc"
+RREPLACES:${PN}-ppp-doc += "networkmanager-ppp-doc"
+RCONFLICTS:${PN}-ppp-doc += "networkmanager-ppp-doc"
+
+RPROVIDES:${PN}-dbg += "networkmanager-dbg"
+RREPLACES:${PN}-dbg += "networkmanager-dbg"
+RCONFLICTS:${PN}-dbg += "networkmanager-dbg"
+
+RPROVIDES_${PN}-dev += "networkmanager-dev"
+RREPLACES_${PN}-dev += "networkmanager-dev"
+RCONFLICTS_${PN}-dev += "networkmanager-dev"

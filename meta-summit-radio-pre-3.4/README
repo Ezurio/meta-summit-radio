@@ -91,6 +91,7 @@ Integration notes:
  - The Summit supplicant is required for full functionality for all radios
     - add the  "summit-supplicant" package to your image recipe
     - add the following to your local.conf or <distro>.conf:
+        PREFERRED_PROVIDER_wpa-supplicant = "summit-supplicant"
         PREFERRED_RPROVIDER_wpa-supplicant = "summit-supplicant"
         PREFERRED_RPROVIDER_wpa-supplicant-cli = "summit-supplicant"
         PREFERRED_RPROVIDER_wpa-supplicant-passphrase = "summit-supplicant"

@@ -42,3 +42,9 @@ do_install() {
 }
 
 CONFFILES_${PN} += "${sysconfdir}/hostapd.conf"
+
+PROVIDES += "hostapd"
+
+RPROVIDES_${PN} += "hostapd"
+RREPLACES_${PN} += "hostapd"
+RCONFLICTS_${PN} += "hostapd"
