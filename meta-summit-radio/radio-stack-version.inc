@@ -1,7 +1,7 @@
 PREMIRRORS:summit-internal = ""
 MIRRORS:summit-internal = ""
 
-SUMMIT_URI_BASE = "https://github.com/Ezurio/Sterling-60-Release-Packages/releases/download/LRD-REL-${PV}"
+SUMMIT_URI_BASE = "https://github.com/Ezurio/Connectivity_Stack_Release_Packages/releases/download/LRD-REL-${PV}"
 SUMMIT_URI_BASE:summit-internal = "https://${RFPROS_FILESHARE_AUTH}files.devops.rfpros.com/builds/linux"
 
 require ../radio-stack-hashes.inc
