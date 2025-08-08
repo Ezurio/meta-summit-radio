@@ -36,7 +36,7 @@ PACKAGES =+ " \
     ${PN}-usb-usb \
     "
 
-do_install:append() {
+do_install_append() {
     rm -f \
         "${D}${nonarch_base_libdir}/firmware/lrdmwl/88W8997_sdio.bin" \
         "${D}${nonarch_base_libdir}/firmware/lrdmwl/88W8997_pcie.bin" \
