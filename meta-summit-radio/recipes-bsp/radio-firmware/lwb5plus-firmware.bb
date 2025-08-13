@@ -94,12 +94,38 @@ FILES:lwb5plus-usb-sa-m2-firmware = "\
     ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-sa-m2_*.hcd \
     "
 
-RDEPENDS:lwb5plus-sdio-div-firmware += "${PN}-sdio-fw ${PN}-div-clm"
-RDEPENDS:lwb5plus-sdio-sa-firmware += "${PN}-sdio-fw ${PN}-sa-clm"
-RDEPENDS:lwb5plus-sdio-sa-m2-firmware += "${PN}-sdio-fw ${PN}-sa-m2-clm"
-RDEPENDS:lwb5plus-usb-div-firmware += "${PN}-div-clm"
-RDEPENDS:lwb5plus-usb-sa-firmware += "${PN}-sa-clm"
-RDEPENDS:lwb5plus-usb-sa-m2-firmware += "${PN}-sa-m2-clm"
+RDEPENDS:lwb5plus-sdio-div-firmware += "\
+    ${PN}-sdio-fw \
+    ${PN}-div-clm \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
+
+RDEPENDS:lwb5plus-sdio-sa-firmware += "\
+    ${PN}-sdio-fw \
+    ${PN}-sa-clm \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
+
+RDEPENDS:lwb5plus-sdio-sa-m2-firmware += "\
+    ${PN}-sdio-fw \
+    ${PN}-sa-m2-clm \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
+
+RDEPENDS:lwb5plus-usb-div-firmware += "\
+    ${PN}-div-clm \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
+
+RDEPENDS:lwb5plus-usb-sa-firmware += "\
+    ${PN}-sa-clm \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
+
+RDEPENDS:lwb5plus-usb-sa-m2-firmware += "\
+    ${PN}-sa-m2-clm \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
 
 ALTERNATIVE:lwb5plus-sdio-div-firmware = "lwb5plus-sdio-bt lwb5plus-sdio-fw lwb5plus-sdio-clm lwb5plus-nvram"
 ALTERNATIVE:lwb5plus-sdio-sa-firmware = "lwb5plus-sdio-bt lwb5plus-sdio-fw lwb5plus-sdio-clm lwb5plus-nvram"
