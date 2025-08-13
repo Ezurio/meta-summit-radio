@@ -43,9 +43,16 @@ FILES_if513-sdio-sa-firmware = "\
     ${nonarch_base_libdir}/firmware/cypress/cyfmac55500-if513-sa.txt \
     "
 
-RDEPENDS_if513-sdio-div-firmware += "${PN}-sdio-fw"
-RDEPENDS_if513-sdio-sa-firmware += "${PN}-sdio-fw"
- 
+RDEPENDS_if513-sdio-div-firmware += "\
+    ${PN}-sdio-fw \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
+
+RDEPENDS_if513-sdio-sa-firmware += "\
+    ${PN}-sdio-fw \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
+
 ALTERNATIVE_if513-sdio-div-firmware = "if513-nvram"
 ALTERNATIVE_if513-sdio-sa-firmware = "if513-nvram"
 

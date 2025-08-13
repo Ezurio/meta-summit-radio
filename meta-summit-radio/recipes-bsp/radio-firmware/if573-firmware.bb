@@ -39,5 +39,11 @@ FILES:if573-pcie-firmware = "\
     ${nonarch_base_libdir}/firmware/cypress/cyfmac55572-pcie.txt \
     "
 
-RDEPENDS:if573-sdio-firmware += "${PN}-if573-fw"
-RDEPENDS:if573-pcie-firmware += "${PN}-if573-fw"
+RDEPENDS:if573-sdio-firmware += " \
+    ${PN}-if573-fw \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
+RDEPENDS:if573-pcie-firmware += " \
+    ${PN}-if573-fw \
+    ${@'lwb-if-regdomain' if d.getVar('LWB_REGDOMAIN') else ''} \
+    "
