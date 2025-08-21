@@ -18,12 +18,12 @@ LIC_FILES_CHKSUM += "file://LICENSE.nxp1;md5=933884af53a2d9e6d73e4e3065819f40"
 inherit update-alternatives
 
 SRC_URI = "\
-    ${SUMMIT_URI}/summit-${BPN}-sdio-uart-${PV}.tar.bz2;name=${BPN}-sdio-uart \
-    ${SUMMIT_URI}/summit-${BPN}-sdio-sdio-${PV}.tar.bz2;name=${BPN}-sdio-sdio \
-    ${SUMMIT_URI}/summit-${BPN}-pcie-uart-${PV}.tar.bz2;name=${BPN}-pcie-uart \
-    ${SUMMIT_URI}/summit-${BPN}-pcie-usb-${PV}.tar.bz2;name=${BPN}-pcie-usb \
-    ${SUMMIT_URI}/summit-${BPN}-usb-uart-${PV}.tar.bz2;name=${BPN}-usb-uart \
-    ${SUMMIT_URI}/summit-${BPN}-usb-usb-${PV}.tar.bz2;name=${BPN}-usb-usb \
+    ${SUMMIT_URI}/summit-${BPN}-sdio-uart-${PV}.tar.bz2;subdir=src;name=${BPN}-sdio-uart \
+    ${SUMMIT_URI}/summit-${BPN}-sdio-sdio-${PV}.tar.bz2;subdir=src;name=${BPN}-sdio-sdio \
+    ${SUMMIT_URI}/summit-${BPN}-pcie-uart-${PV}.tar.bz2;subdir=src;name=${BPN}-pcie-uart \
+    ${SUMMIT_URI}/summit-${BPN}-pcie-usb-${PV}.tar.bz2;subdir=src;name=${BPN}-pcie-usb \
+    ${SUMMIT_URI}/summit-${BPN}-usb-uart-${PV}.tar.bz2;subdir=src;name=${BPN}-usb-uart \
+    ${SUMMIT_URI}/summit-${BPN}-usb-usb-${PV}.tar.bz2;subdir=src;name=${BPN}-usb-usb \
     "
 
 PACKAGES =+ " \

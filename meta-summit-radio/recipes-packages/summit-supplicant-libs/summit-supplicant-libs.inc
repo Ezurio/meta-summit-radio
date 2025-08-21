@@ -17,12 +17,12 @@ SUPP_ARCH:powerpc64 = "-powerpc64-e5500"
 SUPP_ARCH:arm = "-arm-${HFP}"
 SUPP_ARCH:aarch64 = "-aarch64"
 
-SRC_URI = "${SUMMIT_URI}/summit_supplicant_libs${SUPP_ARCH}-${PV}.tar.bz2;name=summit-supplicant-libs${SUPP_ARCH}"
+SRC_URI = "${SUMMIT_URI}/summit_supplicant_libs${SUPP_ARCH}-${PV}.tar.bz2;subdir=src;name=summit-supplicant-libs${SUPP_ARCH}"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
-S = "${WORKDIR}"
+S = "${WORKDIR}/src"
 
 INSANE_SKIP:${PN} = "ldflags already-stripped"
 INSANE_SKIP:${PN}-passphrase = "ldflags already-stripped"

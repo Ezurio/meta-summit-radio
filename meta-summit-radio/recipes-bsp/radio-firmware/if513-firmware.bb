@@ -7,8 +7,8 @@ require radio-firmware-lwb.inc
 inherit update-alternatives
 
 SRC_URI = "\
-    ${SUMMIT_URI}/summit-if513-sdio-div-firmware-${PV}.tar.bz2;name=if513-sdio-div-firmware  \
-    ${SUMMIT_URI}/summit-if513-sdio-sa-firmware-${PV}.tar.bz2;name=if513-sdio-sa-firmware  \
+    ${SUMMIT_URI}/summit-if513-sdio-div-firmware-${PV}.tar.bz2;subdir=src;name=if513-sdio-div-firmware  \
+    ${SUMMIT_URI}/summit-if513-sdio-sa-firmware-${PV}.tar.bz2;subdir=src;name=if513-sdio-sa-firmware  \
     "
 
 do_install:append() {
