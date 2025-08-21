@@ -37,7 +37,7 @@ require radio-firmware.inc
 require radio-stack-version.inc
 
 SRC_URI += "\
-    ${SUMMIT_URI}/summit-nx61x-1218-firmware-${PV}.tar.bz2;name=nx61x-1218-firmware \
+    ${SUMMIT_URI}/summit-nx61x-1218-firmware-${PV}.tar.bz2;subdir=src;name=nx61x-1218-firmware \
     "
 
 do_install_append() {

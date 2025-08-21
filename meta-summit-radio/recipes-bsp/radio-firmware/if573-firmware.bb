@@ -6,8 +6,8 @@ SUMMARY:if573-pcie-firmware = "Summit firmware for the IF573 PCIE/UART module"
 require radio-firmware-lwb.inc
 
 SRC_URI = "\
-    ${SUMMIT_URI}/summit-if573-sdio-firmware-${PV}.tar.bz2;name=if573-sdio-firmware  \
-    ${SUMMIT_URI}/summit-if573-pcie-firmware-${PV}.tar.bz2;name=if573-pcie-firmware  \
+    ${SUMMIT_URI}/summit-if573-sdio-firmware-${PV}.tar.bz2;subdir=src;name=if573-sdio-firmware  \
+    ${SUMMIT_URI}/summit-if573-pcie-firmware-${PV}.tar.bz2;subdir=src;name=if573-pcie-firmware  \
     "
 
 PACKAGES =+ " \

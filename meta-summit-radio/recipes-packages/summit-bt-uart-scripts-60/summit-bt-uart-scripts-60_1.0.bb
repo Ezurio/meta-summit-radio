@@ -10,15 +10,15 @@ BT_SERIAL_PORT ?= "/dev/ttyS1"
 BT_SERIAL_BAUD ?= "3000000"
 
 SRC_URI = " \
-    file://LICENSE.ezurio \
-    file://bt-service.sh \
-    file://bttest.sh \
-    file://80-btattach.rules-sysv \
-    file://80-btattach.rules-sysd \
-    file://btattach.service \
+    file://LICENSE.ezurio;subdir=src \
+    file://bt-service.sh;subdir=src \
+    file://bttest.sh;subdir=src \
+    file://80-btattach.rules-sysv;subdir=src \
+    file://80-btattach.rules-sysd;subdir=src \
+    file://btattach.service;subdir=src \
     "
 
-S = "${WORKDIR}"
+S = "${WORKDIR}/src"
 
 FILES:${PN} += "${systemd_unitdir}/system ${sysconfdir}"
 

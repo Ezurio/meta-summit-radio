@@ -11,12 +11,12 @@ require radio-firmware-lwb.inc
 inherit update-alternatives
 
 SRC_URI = "\
-    ${SUMMIT_URI}/summit-lwb5plus-sdio-div-firmware-${PV}.tar.bz2;name=lwb5plus-sdio-div-firmware  \
-    ${SUMMIT_URI}/summit-lwb5plus-sdio-sa-firmware-${PV}.tar.bz2;name=lwb5plus-sdio-sa-firmware  \
-    ${SUMMIT_URI}/summit-lwb5plus-sdio-sa-m2-firmware-${PV}.tar.bz2;name=lwb5plus-sdio-sa-m2-firmware  \
-    ${SUMMIT_URI}/summit-lwb5plus-usb-div-firmware-${PV}.tar.bz2;name=lwb5plus-usb-div-firmware  \
-    ${SUMMIT_URI}/summit-lwb5plus-usb-sa-firmware-${PV}.tar.bz2;name=lwb5plus-usb-sa-firmware  \
-    ${SUMMIT_URI}/summit-lwb5plus-usb-sa-m2-firmware-${PV}.tar.bz2;name=lwb5plus-usb-sa-m2-firmware  \
+    ${SUMMIT_URI}/summit-lwb5plus-sdio-div-firmware-${PV}.tar.bz2;subdir=src;name=lwb5plus-sdio-div-firmware  \
+    ${SUMMIT_URI}/summit-lwb5plus-sdio-sa-firmware-${PV}.tar.bz2;subdir=src;name=lwb5plus-sdio-sa-firmware  \
+    ${SUMMIT_URI}/summit-lwb5plus-sdio-sa-m2-firmware-${PV}.tar.bz2;subdir=src;name=lwb5plus-sdio-sa-m2-firmware  \
+    ${SUMMIT_URI}/summit-lwb5plus-usb-div-firmware-${PV}.tar.bz2;subdir=src;name=lwb5plus-usb-div-firmware  \
+    ${SUMMIT_URI}/summit-lwb5plus-usb-sa-firmware-${PV}.tar.bz2;subdir=src;name=lwb5plus-usb-sa-firmware  \
+    ${SUMMIT_URI}/summit-lwb5plus-usb-sa-m2-firmware-${PV}.tar.bz2;subdir=src;name=lwb5plus-usb-sa-m2-firmware  \
     "
 
 do_install:append() {
