@@ -18,7 +18,7 @@ SRC_URI = " \
     file://btattach.service \
     "
 
-S = "${WORKDIR}"
+S = "${SUMMIT_UNPACKDIR}"
 
 FILES:${PN} += "${systemd_unitdir}/system ${sysconfdir}"
 
