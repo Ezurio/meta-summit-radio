@@ -2,7 +2,6 @@ SUMMARY = "Summit Backports for 60"
 
 BACKPORTS_CONFIG = "${@bb.utils.contains('DISTRO_FEATURES','bluetooth','summit60','summit60_nbt',d)}"
 
-
 RCONFLICTS:${PN} = " \
         kernel-module-lwb-if-backports \
         kernel-module-ti-backports \

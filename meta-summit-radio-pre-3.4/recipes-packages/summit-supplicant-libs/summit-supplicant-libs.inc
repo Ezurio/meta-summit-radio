@@ -22,7 +22,7 @@ SRC_URI = "${SUMMIT_URI}/summit_supplicant_libs${SUPP_ARCH}-${PV}.tar.bz2;name=s
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
-S = "${WORKDIR}"
+S = "${SUMMIT_UNPACKDIR}"
 
 INSANE_SKIP_${PN} = "ldflags already-stripped"
 INSANE_SKIP_${PN}-passphrase = "ldflags already-stripped"
