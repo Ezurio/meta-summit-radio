@@ -18,7 +18,7 @@ do_compile[noexec] = "1"
 
 FILES:${PN} += "${nonarch_base_libdir}"
 
-S = "${WORKDIR}"
+S = "${SUMMIT_UNPACKDIR}"
 
 ALLOW_EMPTY:${PN}-dev = "0"
 ALLOW_EMPTY:${PN}-dbg = "0"
