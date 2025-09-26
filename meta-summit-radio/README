@@ -101,10 +101,10 @@ Integration notes:
    to support features of the Summit supplicant
 
  - wireless-regdb-static provider must be specified in local.conf or <distro>.conf
-   - When using 60 Series firmware packages, the wireless-regdb-static provider must be set
+   - When using ath6k firmware packages, the wireless-regdb-static provider must be set
      to the firmware package added to the image and used for the radio:
         PREFERRED_RPROVIDER_wireless-regdb-static = "<firmware package>"
-   - When using IF573/LWB/LWB+/LWB5+ firmware packages, the wireless-regdb-static provider must
+   - For all other firmware packages, the wireless-regdb-static provider must
      be set to the upstream provider:
 		    PREFERRED_RPROVIDER_wireless-regdb-static = "wireless-regdb"
 

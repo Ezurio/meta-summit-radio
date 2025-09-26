@@ -37,3 +37,5 @@ do_install() {
 	install -d  "${D}${nonarch_base_libdir}"
 	cp -r "${S}/lib/"* "${D}${nonarch_base_libdir}"
 }
+
+RDEPENDS:${PN} += "wireless-regdb-static"

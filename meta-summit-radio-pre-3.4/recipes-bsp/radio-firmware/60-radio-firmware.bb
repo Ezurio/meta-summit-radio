@@ -110,7 +110,3 @@ RDEPENDS_${PN}-pcie-uart = "${PN}-power-tables"
 RDEPENDS_${PN}-pcie-usb = "${PN}-power-tables"
 RDEPENDS_${PN}-usb-usb = "${PN}-power-tables"
 RDEPENDS_${PN}-usb-uart = "${PN}-power-tables"
-
-RPROVIDES_${PN}-power-tables  += "wireless-regdb-static"
-RREPLACES_${PN}-power-tables  += "wireless-regdb-static"
-RCONFLICTS_${PN}-power-tables += "wireless-regdb-static"
