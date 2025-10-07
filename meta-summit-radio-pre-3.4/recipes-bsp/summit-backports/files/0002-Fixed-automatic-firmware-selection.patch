@@ -8,6 +8,8 @@ PROD-33261
  main.c | 24 ++++++++++++------------
  1 file changed, 12 insertions(+), 12 deletions(-)
 
+Upstream-Status: Pending
+
 diff --git a/drivers/net/wireless/summit/lrdmwl/main.c b/drivers/net/wireless/summit/lrdmwl/main.c
 index 82c34a5..1f90999 100644
 --- a/drivers/net/wireless/summit/lrdmwl/main.c

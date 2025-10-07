@@ -1,3 +1,6 @@
+
+Upstream-Status: Pending
+
 diff --git a/defconfigs/bdimx8 b/defconfigs/bdimx8
 index 9971b728..ea5a1be5 100644
 --- a/defconfigs/bdimx8
