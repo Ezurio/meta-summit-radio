@@ -59,9 +59,11 @@ II. Misc
 
 This layer supports the following modules:
     - Summit 60 series radio drivers and firmware
-    - Sona IF573 radio drivers and firmware
-    - Sona NX611 radio drivers and firmware
     - Sterling LWB/LWB+/LWB5+ radio drivers and firmware
+    - Sona IF573/IF513 radio drivers and firmware
+    - Sona NX611 radio drivers and firmware
+    - Sona TI351 radio drivers and firmware
+    - BD-SDMAC radio drivers and firmware
     - Summit WPA supplicant
     - Summit NetworkManager
 
@@ -100,17 +102,9 @@ Integration notes:
  - Summit Network Manager is an optional component that enhances the functionality of the upstream
    to support features of the Summit supplicant
 
- - wireless-regdb-static provider must be specified in local.conf or <distro>.conf
-   - When using ath6k firmware packages, the wireless-regdb-static provider must be set
-     to the firmware package added to the image and used for the radio:
-        PREFERRED_RPROVIDER_wireless-regdb-static = "<firmware package>"
-   - For all other firmware packages, the wireless-regdb-static provider must
-     be set to the upstream provider:
-		    PREFERRED_RPROVIDER_wireless-regdb-static = "wireless-regdb"
-
  - This layer provides a set of example image recipes that can be used as references
 
-IF573, LWB, LWB+, LWB5+ driver common issues:
+IF573, IF513, LWB, LWB+, LWB5+ driver common issues:
   - The regulatory domain must be specified in the platform based on the destination of the
     target device.  Failure to do this will prevent the Wi-Fi driver from loading.  See the
 	  Software Integration Guide for more details.
