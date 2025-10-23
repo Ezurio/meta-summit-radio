@@ -121,3 +121,19 @@ done
 
 calc_hash sha256sum "${files}"
 calc_hash md5sum "${files}"
+
+mkdir -p tmp-bin
+
+for i in sdio usb; do
+  scp ${cmdopt}:${prefix}/firmware/${ver}/summit-lwb5plus-${i}-div-firmware-${ver}.tar.bz2 ./tmp-bin
+  tar -xjf ./tmp-bin/summit-lwb5plus-${i}-div-firmware-${ver}.tar.bz2 -C ./tmp-bin
+done
+
+echo >> "${file}"
+ls tmp-bin/lib/firmware/brcm/* | sed -n \
+  -e 's/.*sdio.*_v\(.*\)\.hcd/LWB_PLUS_SDIO_HCD_VER = "\1"/p' \
+  -e 's/.*usb.*_v\(.*\)\.hcd/LWB_PLUS_USB_HCD_VER = "\1"/p' \
+  -e 's/.*sdio-prod_v\(.*\)\.bin/LWB_PLUS_SDIO_BIN_VER = "\1"/p' \
+  -e 's/.*usb-div-prod_v\(.*\)\.bin/LWB_PLUS_USB_BIN_VER = "\1"/p' >> "${file}"
+
+rm -rf tmp-bin
