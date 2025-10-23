@@ -170,37 +170,23 @@ ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-bt] = "80"
 ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-fw] = "80"
 ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-clm] = "80"
 
-def getfile(d, p):
-    import glob
-
-    # Get the path to the source directory
-    destdir = d.getVar('D', True)
-    file_path = destdir + d.getVar('nonarch_base_libdir', True) + '/firmware/brcm/'
-
-    # Use glob to find the file, in case it has a version suffix
-    file_names = glob.glob(file_path + p)
-    if not file_names:
-        bb.fatal("File %s does not exist in %s" % (p, file_path))
-
-    return file_names[0][len(destdir):]
-
-ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-bt] = "${@getfile(d, 'BCM4373A0-sdio-div_*.hcd')}"
-ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-bt] = "${@getfile(d, 'BCM4373A0-sdio-sa_*.hcd')}"
-ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-bt] = "${@getfile(d, 'BCM4373A0-sdio-sa-m2_*.hcd')}"
-ALTERNATIVE_TARGET_lwb5plus-usb-div-firmware[lwb5plus-usb-bt] = "${@getfile(d, 'BCM4373A0-usb-div_*.hcd')}"
-ALTERNATIVE_TARGET_lwb5plus-usb-sa-firmware[lwb5plus-usb-bt] = "${@getfile(d, 'BCM4373A0-usb-sa_*.hcd')}"
-ALTERNATIVE_TARGET_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-bt] = "${@getfile(d, 'BCM4373A0-usb-sa-m2_*.hcd')}"
+ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-bt] = "BCM4373A0-sdio-div_v${LWB_PLUS_SDIO_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-bt] = "BCM4373A0-sdio-sa_v${LWB_PLUS_SDIO_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-bt] = "BCM4373A0-sdio-sa-m2_v${LWB_PLUS_SDIO_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-usb-div-firmware[lwb5plus-usb-bt] = "BCM4373A0-usb-div_v${LWB_PLUS_USB_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-usb-sa-firmware[lwb5plus-usb-bt] = "BCM4373A0-usb-sa_v${LWB_PLUS_USB_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-bt] = "BCM4373A0-usb-sa-m2_v${LWB_PLUS_USB_HCD_VER}.hcd"
 
 ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-nvram] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-div.txt"
 ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-nvram] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sa.txt"
 ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-nvram] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sa-m2.txt"
 
-ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-fw] = "${@getfile(d, 'brcmfmac4373-sdio-prod_*.bin')}"
-ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-fw] = "${@getfile(d, 'brcmfmac4373-sdio-prod_*.bin')}"
-ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-fw] = "${@getfile(d, 'brcmfmac4373-sdio-prod_*.bin')}"
-ALTERNATIVE_TARGET_lwb5plus-usb-div-firmware[lwb5plus-usb-fw] = "${@getfile(d, 'brcmfmac4373-usb-div-prod_*.bin')}"
-ALTERNATIVE_TARGET_lwb5plus-usb-sa-firmware[lwb5plus-usb-fw] = "${@getfile(d, 'brcmfmac4373-usb-sa-prod_*.bin')}"
-ALTERNATIVE_TARGET_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-fw] = "${@getfile(d, 'brcmfmac4373-usb-sa-m2-prod_*.bin')}"
+ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-fw] = "brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-fw] = "brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-fw] = "brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-usb-div-firmware[lwb5plus-usb-fw] = "brcmfmac4373-usb-div-prod_v${LWB_PLUS_USB_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-usb-sa-firmware[lwb5plus-usb-fw] = "brcmfmac4373-usb-sa-prod_v${LWB_PLUS_USB_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-fw] = "brcmfmac4373-usb-sa-m2-prod_v${LWB_PLUS_USB_BIN_VER}.bin"
 
 ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-clm] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-clm-div.clm_blob"
 ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-clm] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-clm-sa.clm_blob"

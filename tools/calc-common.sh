@@ -7,10 +7,10 @@ set -e -o pipefail
 [ -z "${ver}" ] && { echo "Usage: ${0} <version>"; exit 1; }
 
 prefix="/var/www/html/builds/linux"
-cmd="ssh -o ControlMaster=auto -o ControlPersist=5s -o ControlPath=/tmp/ssh-fileshare fileshare@files.devops.rfpros.com"
+cmdopt="-o ControlMaster=auto -o ControlPersist=5s -o ControlPath=/tmp/ssh-fileshare fileshare@files.devops.rfpros.com"
 
 calc_hash() {
-  ${cmd} "set -e; cd ${prefix} && ${1} ${2}" | \
+  ssh ${cmdopt} "set -e; cd ${prefix} && ${1} ${2}" | \
     sed -r \
       -e 's/-src//g' \
       -e 's/_/-/g' \
