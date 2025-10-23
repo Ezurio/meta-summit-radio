@@ -194,3 +194,8 @@ SRC_URI[reg50n-arm-eabi.md5sum] = "6ac78e9e282d1d1cab297a27953d7e3f"
 SRC_URI[summit-supplicant-libs-legacy-arm-eabihf.md5sum] = "a40db08b35d85a595e99f6f50ea86e1f"
 SRC_URI[reg45n-arm-eabihf.md5sum] = "9dbb5410c5968f8ca0cb98823e41c789"
 SRC_URI[reg50n-arm-eabihf.md5sum] = "c47d260db75038d4b72317fc3b83426e"
+
+LWB_PLUS_SDIO_HCD_VER = "001.001.025.0123.0244"
+LWB_PLUS_USB_HCD_VER = "001.001.025.0123.0242"
+LWB_PLUS_SDIO_BIN_VER = "13.10.246.356"
+LWB_PLUS_USB_BIN_VER = "13.10.246.356"
