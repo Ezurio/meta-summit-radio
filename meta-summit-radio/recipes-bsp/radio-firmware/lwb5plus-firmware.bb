@@ -48,7 +48,7 @@ PACKAGES =+ " \
 FILES:${PN} = ""
 
 FILES:${PN}-sdio-fw = "\
-    ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sdio-prod_*.bin \
+    ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin \
     "
 
 FILES:${PN}-div-clm = "\
@@ -65,33 +65,33 @@ FILES:${PN}-sa-m2-clm = "\
 
 # User facing packages
 FILES:lwb5plus-sdio-div-firmware = "\
-    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-sdio-div_*.hcd \
+    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-sdio-div_v${LWB_PLUS_SDIO_HCD_VER}.hcd \
     ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-div.txt \
     "
 
 FILES:lwb5plus-sdio-sa-firmware = "\
-    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-sdio-sa_*.hcd \
+    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-sdio-sa_v${LWB_PLUS_SDIO_SA_HCD_VER}.hcd \
     ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sa.txt \
     "
 
 FILES:lwb5plus-sdio-sa-m2-firmware = "\
-    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-sdio-sa-m2_*.hcd \
+    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-sdio-sa-m2_v${LWB_PLUS_SDIO_HCD_VER}.hcd \
     ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sa-m2.txt \
     "
 
 FILES:lwb5plus-usb-div-firmware = "\
-    ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-usb-div-prod_*.bin \
-    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-div_*.hcd \
+    ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-usb-div-prod_v${LWB_PLUS_USB_BIN_VER}.bin \
+    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-div_v${LWB_PLUS_USB_HCD_VER}.hcd \
     "
 
 FILES:lwb5plus-usb-sa-firmware = "\
-    ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-usb-sa-prod_*.bin \
-    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-sa_*.hcd \
+    ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-usb-sa-prod_v${LWB_PLUS_USB_BIN_VER}.bin \
+    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-sa_v${LWB_PLUS_USB_SA_HCD_VER}.hcd \
     "
 
 FILES:lwb5plus-usb-sa-m2-firmware = "\
-    ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-usb-sa-m2-prod_*.bin \
-    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-sa-m2_*.hcd \
+    ${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-usb-sa-m2-prod_v${LWB_PLUS_USB_BIN_VER}.bin \
+    ${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-sa-m2_v${LWB_PLUS_USB_HCD_VER}.hcd \
     "
 
 RDEPENDS:lwb5plus-sdio-div-firmware += "\
@@ -170,23 +170,23 @@ ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-bt] = "80"
 ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-fw] = "80"
 ALTERNATIVE_PRIORITY_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-clm] = "80"
 
-ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-bt] = "BCM4373A0-sdio-div_v${LWB_PLUS_SDIO_HCD_VER}.hcd"
-ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-bt] = "BCM4373A0-sdio-sa_v${LWB_PLUS_SDIO_HCD_VER}.hcd"
-ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-bt] = "BCM4373A0-sdio-sa-m2_v${LWB_PLUS_SDIO_HCD_VER}.hcd"
-ALTERNATIVE_TARGET_lwb5plus-usb-div-firmware[lwb5plus-usb-bt] = "BCM4373A0-usb-div_v${LWB_PLUS_USB_HCD_VER}.hcd"
-ALTERNATIVE_TARGET_lwb5plus-usb-sa-firmware[lwb5plus-usb-bt] = "BCM4373A0-usb-sa_v${LWB_PLUS_USB_HCD_VER}.hcd"
-ALTERNATIVE_TARGET_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-bt] = "BCM4373A0-usb-sa-m2_v${LWB_PLUS_USB_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-bt] = "${nonarch_base_libdir}/firmware/brcm/BCM4373A0-sdio-div_v${LWB_PLUS_SDIO_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-bt] = "${nonarch_base_libdir}/firmware/brcm/BCM4373A0-sdio-sa_v${LWB_PLUS_SDIO_SA_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-bt] = "${nonarch_base_libdir}/firmware/brcm/BCM4373A0-sdio-sa-m2_v${LWB_PLUS_SDIO_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-usb-div-firmware[lwb5plus-usb-bt] = "${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-div_v${LWB_PLUS_USB_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-usb-sa-firmware[lwb5plus-usb-bt] = "${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-sa_v${LWB_PLUS_USB_SA_HCD_VER}.hcd"
+ALTERNATIVE_TARGET_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-bt] = "${nonarch_base_libdir}/firmware/brcm/BCM4373A0-usb-sa-m2_v${LWB_PLUS_USB_HCD_VER}.hcd"
 
 ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-nvram] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-div.txt"
 ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-nvram] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sa.txt"
 ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-nvram] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sa-m2.txt"
 
-ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-fw] = "brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin"
-ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-fw] = "brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin"
-ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-fw] = "brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin"
-ALTERNATIVE_TARGET_lwb5plus-usb-div-firmware[lwb5plus-usb-fw] = "brcmfmac4373-usb-div-prod_v${LWB_PLUS_USB_BIN_VER}.bin"
-ALTERNATIVE_TARGET_lwb5plus-usb-sa-firmware[lwb5plus-usb-fw] = "brcmfmac4373-usb-sa-prod_v${LWB_PLUS_USB_BIN_VER}.bin"
-ALTERNATIVE_TARGET_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-fw] = "brcmfmac4373-usb-sa-m2-prod_v${LWB_PLUS_USB_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-fw] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-fw] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-sdio-sa-m2-firmware[lwb5plus-sdio-fw] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-sdio-prod_v${LWB_PLUS_SDIO_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-usb-div-firmware[lwb5plus-usb-fw] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-usb-div-prod_v${LWB_PLUS_USB_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-usb-sa-firmware[lwb5plus-usb-fw] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-usb-sa-prod_v${LWB_PLUS_USB_BIN_VER}.bin"
+ALTERNATIVE_TARGET_lwb5plus-usb-sa-m2-firmware[lwb5plus-usb-fw] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-usb-sa-m2-prod_v${LWB_PLUS_USB_BIN_VER}.bin"
 
 ALTERNATIVE_TARGET_lwb5plus-sdio-div-firmware[lwb5plus-sdio-clm] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-clm-div.clm_blob"
 ALTERNATIVE_TARGET_lwb5plus-sdio-sa-firmware[lwb5plus-sdio-clm] = "${nonarch_base_libdir}/firmware/brcm/brcmfmac4373-clm-sa.clm_blob"
