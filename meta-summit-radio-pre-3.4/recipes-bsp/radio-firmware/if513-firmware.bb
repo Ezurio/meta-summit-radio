@@ -12,7 +12,7 @@ SRC_URI = "\
     "
 
 do_install_append() {
-    # Remove the generic firmware files that are not used by LWB5+
+    # Remove the links that will be recreated later
     rm -f "${D}${nonarch_base_libdir}/firmware/cypress/cyfmac55500-sdio.txt"
 }
 
