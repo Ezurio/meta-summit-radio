@@ -44,8 +44,7 @@ python do_unpack_append() {
     mfgname = d.expand(d.getVar("REG_FULL_NAME", True))
     s = d.expand(d.getVar("S", True))
     #b = d.expand(d.getVar("B", True))
-    os.chdir(s)
-    os.system("./" + mfgname + ".sh tar")
+    os.system("cd " + s + " && ./" + mfgname + ".sh tar")
     tf = tarfile.open(s + "/" + mfgname + ".tar.bz2")
     tf.extractall(s)
 }
