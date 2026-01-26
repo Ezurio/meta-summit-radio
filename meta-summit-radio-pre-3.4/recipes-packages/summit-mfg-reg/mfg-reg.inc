@@ -21,8 +21,7 @@ SUMMIT_URI_summit-internal = "${SUMMIT_URI_BASE}/${REG_NAME}/laird/${PV}"
 
 SRC_URI = "${SUMMIT_URI}/${REG_FULL_NAME}.tar.bz2;subdir=src;name=${REG_NAME}${REG_ARCH}"
 
-S = "${WORKDIR}/src"
-#B = "${WORKDIR}/build"
+S = "${SUMMIT_UNPACKDIR}/src"
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"

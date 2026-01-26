@@ -29,7 +29,7 @@ SRC_URI = " \
     file://NetworkManager.conf \
 "
 
-S = "${WORKDIR}/summit-network-manager-${PV}"
+S = "${SUMMIT_UNPACKDIR}/summit-network-manager-${PV}"
 
 # ['auto', 'symlink', 'file', 'netconfig', 'resolvconf']
 NETWORKMANAGER_DNS_RC_MANAGER_DEFAULT ??= "auto"

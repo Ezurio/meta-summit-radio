@@ -13,7 +13,7 @@ inherit module cml1
 
 DEPENDS += "coreutils-native bison-native flex-native kern-tools-native"
 
-S = "${WORKDIR}/summit-backports-${PV}"
+S = "${SUMMIT_UNPACKDIR}/summit-backports-${PV}"
 
 SUMMIT_URI ?= "${SUMMIT_URI_BASE}"
 SUMMIT_URI:summit-internal = "${SUMMIT_URI_BASE}/backports/laird/${PV}"
@@ -69,8 +69,8 @@ do_configure () {
 
     # Copy defconfig to .config if .config does not exist. This allows
     # recipes to manage the .config themselves in do_configure:prepend().
-    if [ -f "${WORKDIR}/defconfig" ] && [ ! -f "${S}/.config" ]; then
-        cp "${WORKDIR}/defconfig" "${S}/.config"
+    if [ -f "${SUMMIT_UNPACKDIR}/defconfig" ] && [ ! -f "${S}/.config" ]; then
+        cp "${SUMMIT_UNPACKDIR}/defconfig" "${S}/.config"
     fi
 
     # Copy in-tree defconfig to .config if .config does not exist.

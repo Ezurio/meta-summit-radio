@@ -10,7 +10,7 @@ SRC_URI = "git://github.com/Ezurio/brcm_patchram.git;nobranch=1;protocol=https"
 
 SRCREV = "2a74311ed7b26ffada931fdf0be1f62930c7ba33"
 
-S = "${WORKDIR}/git"
+S = "${SUMMIT_GIT_UNPACKDIR}"
 
 DEPENDS += "bluez5"
 

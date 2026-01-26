@@ -16,7 +16,7 @@ SRC_URI = " \
     file://hostapd.service \
 "
 
-S = "${WORKDIR}/summit_supplicant-${PV}"
+S = "${SUMMIT_UNPACKDIR}/summit_supplicant-${PV}"
 B = "${S}/hostapd"
 
 inherit update-rc.d systemd pkgconfig

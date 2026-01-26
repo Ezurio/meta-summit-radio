@@ -16,7 +16,7 @@ SUMMIT_URI_summit-internal = "${SUMMIT_URI_BASE}/adaptive_bt/src/${PV}"
 
 SRC_URI = "${SUMMIT_URI}/adaptive_bt-src-${PV}.tar.gz;name=adaptive-bt"
 
-S = "${WORKDIR}/adaptive_bt-${PV}"
+S = "${SUMMIT_UNPACKDIR}/adaptive_bt-${PV}"
 
 EXTRA_OEMAKE = "'LINKOPT=${LDFLAGS}'"
 

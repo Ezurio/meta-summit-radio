@@ -29,7 +29,7 @@ SRC_URI = " \
     file://NetworkManager.conf \
 "
 
-S = "${WORKDIR}/summit-network-manager-${PV}"
+S = "${SUMMIT_UNPACKDIR}/summit-network-manager-${PV}"
 
 # ['auto', 'symlink', 'file', 'netconfig', 'resolvconf']
 NETWORKMANAGER_DNS_RC_MANAGER_DEFAULT ??= "auto"
@@ -297,6 +297,6 @@ RPROVIDES:${PN}-dbg += "networkmanager-dbg"
 RREPLACES:${PN}-dbg += "networkmanager-dbg"
 RCONFLICTS:${PN}-dbg += "networkmanager-dbg"
 
-RPROVIDES_${PN}-dev += "networkmanager-dev"
-RREPLACES_${PN}-dev += "networkmanager-dev"
-RCONFLICTS_${PN}-dev += "networkmanager-dev"
+RPROVIDES:${PN}-dev += "networkmanager-dev"
+RREPLACES:${PN}-dev += "networkmanager-dev"
+RCONFLICTS:${PN}-dev += "networkmanager-dev"

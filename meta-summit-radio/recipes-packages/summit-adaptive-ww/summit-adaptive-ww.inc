@@ -31,7 +31,7 @@ SRC_URI = "${SUMMIT_URI}/adaptive_ww${ADAP_ARCH}-${PV}.tar.bz2;subdir=src;name=a
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
-S = "${WORKDIR}/src"
+S = "${SUMMIT_UNPACKDIR}/src"
 
 RDEPENDS:${PN} = "libnl libnl-genl libnl-route"
 
