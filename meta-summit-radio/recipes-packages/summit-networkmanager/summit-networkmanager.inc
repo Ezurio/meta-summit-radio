@@ -47,6 +47,7 @@ EXTRA_OEMESON = "\
     -Dconfig_dns_rc_manager_default=${NETWORKMANAGER_DNS_RC_MANAGER_DEFAULT} \
     -Dconfig_dhcp_default=${NETWORKMANAGER_DHCP_DEFAULT} \
     -Dcrypto=openssl \
+    -Dman=false \
 "
 
 # stolen from https://github.com/void-linux/void-packages/blob/master/srcpkgs/NetworkManager/template
@@ -97,6 +98,7 @@ PACKAGECONFIG[selinux] = "-Dselinux=true,-Dselinux=false,libselinux"
 PACKAGECONFIG[vala] = "-Dvapi=true,-Dvapi=false"
 PACKAGECONFIG[dhcpcd] = "-Ddhcpcd=yes,-Ddhcpcd=no,,dhcpcd"
 PACKAGECONFIG[concheck] = "-Dconcheck=true,-Dconcheck=false,curl,"
+PACKAGECONFIG[nbft] = "-Dnbft=true,-Dnbft=false,libnvme"
 
 PACKAGES =+ " \
     ${PN}-adsl \
