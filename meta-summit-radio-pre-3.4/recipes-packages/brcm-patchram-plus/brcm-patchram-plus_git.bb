@@ -6,9 +6,13 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=691691b063f1b4034300dc452e36b68d"
 
 inherit pkgconfig
 
-SRC_URI = "git://github.com/Ezurio/brcm_patchram.git;nobranch=1;protocol=https"
+require radio-stack-version.inc
 
-SRCREV = "2a74311ed7b26ffada931fdf0be1f62930c7ba33"
+SRC_URI = "git://github.com/Ezurio/brcm_patchram.git;nobranch=1;protocol=https"
+SRC_URI:summit-internal = "git://github.com/rfpros/cp_linux-brcm_patchram.git;nobranch=1;protocol=https"
+
+SRCREV = "LRD-REL-${RADIO_VERSION}"
+PV = "${RADIO_VERSION}+git${SRCPV}"
 
 S = "${SUMMIT_GIT_UNPACKDIR}"
 
