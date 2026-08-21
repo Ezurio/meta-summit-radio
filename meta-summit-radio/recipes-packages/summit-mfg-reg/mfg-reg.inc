@@ -26,12 +26,16 @@ S = "${SUMMIT_UNPACKDIR}/src"
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
-FILES:${PN} += "${nonarch_base_libdir}/*"
+PACKAGES += "${PN}-firmware"
+FILES:${PN} = "${bindir}"
+FILES:${PN}-firmware = "${libdir}/firmware ${nonarch_base_libdir}/firmware"
+RDEPENDS:${PN} += "${PN}-firmware"
 
 INSANE_SKIP:${PN} = "ldflags already-stripped"
 
 ALLOW_EMPTY:${PN}-dev = "0"
 ALLOW_EMPTY:${PN}-dbg = "0"
+ALLOW_EMPTY:${PN}-firmware = "1"
 
 RDEPENDS:${PN} += " \
 	libedit libnl libnl-genl libnl-route \

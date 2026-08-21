@@ -16,6 +16,8 @@ DEPENDS = " \
     libndp \
     libnewt \
     openssl \
+    dbus \
+    glib-2.0 \
 "
 
 inherit meson pkgconfig gettext update-rc.d systemd gobject-introspection gtk-doc update-alternatives
@@ -86,7 +88,7 @@ PACKAGECONFIG[ofono] = "-Dofono=true,-Dofono=false,ofono"
 PACKAGECONFIG[ppp] = "-Dppp=true -Dpppd=/usr/sbin/pppd,-Dppp=false,ppp,ppp"
 PACKAGECONFIG[dnsmasq] = "-Ddnsmasq=${bindir}/dnsmasq,,,dnsmasq"
 PACKAGECONFIG[resolvconf] = "-Dresolvconf=${base_sbindir}/resolvconf,-Dresolvconf=no,,resolvconf"
-PACKAGECONFIG[wifi] = "-Dwext=false -Dwifi=true,-Dwext=false -Dwifi=false"
+PACKAGECONFIG[wifi] = "-Dwext=false -Dwifi=true,-Dwext=false -Dwifi=false,,wpa-supplicant"
 PACKAGECONFIG[ifupdown] = "-Difupdown=true,-Difupdown=false"
 PACKAGECONFIG[cloud-setup] = "-Dnm_cloud_setup=true,-Dnm_cloud_setup=false"
 PACKAGECONFIG[nmcli] = "-Dnmcli=true,-Dnmcli=false"

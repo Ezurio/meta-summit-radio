@@ -14,8 +14,9 @@ DEPENDS = " \
     udev \
     util-linux \
     libndp \
-    libnewt \
     openssl \
+    dbus \
+    glib-2.0 \
 "
 
 inherit meson pkgconfig gettext update-rc.d systemd gobject-introspection gtk-doc update-alternatives upstream-version-is-even
@@ -40,7 +41,6 @@ NETWORKMANAGER_DHCP_DEFAULT ??= "internal"
 EXTRA_OEMESON = "\
     -Difcfg_rh=false \
     -Dtests=no \
-    -Dnmtui=true \
     -Dudev_dir=${nonarch_base_libdir}/udev \
     -Dlibpsl=false \
     -Dqt=false \
@@ -86,10 +86,11 @@ PACKAGECONFIG[ofono] = "-Dofono=true,-Dofono=false,ofono"
 PACKAGECONFIG[ppp] = "-Dppp=true -Dpppd=/usr/sbin/pppd,-Dppp=false,ppp,ppp"
 PACKAGECONFIG[dnsmasq] = "-Ddnsmasq=${bindir}/dnsmasq,,,dnsmasq"
 PACKAGECONFIG[resolvconf] = "-Dresolvconf=${base_sbindir}/resolvconf,-Dresolvconf=no,,resolvconf"
-PACKAGECONFIG[wifi] = "-Dwext=false -Dwifi=true,-Dwext=false -Dwifi=false"
+PACKAGECONFIG[wifi] = "-Dwext=false -Dwifi=true,-Dwext=false -Dwifi=false,,wpa-supplicant"
 PACKAGECONFIG[ifupdown] = "-Difupdown=true,-Difupdown=false"
 PACKAGECONFIG[cloud-setup] = "-Dnm_cloud_setup=true,-Dnm_cloud_setup=false"
 PACKAGECONFIG[nmcli] = "-Dnmcli=true,-Dnmcli=false"
+PACKAGECONFIG[nmtui] = "-Dnmtui=true,-Dnmtui=false,libnewt"
 PACKAGECONFIG[readline] = "-Dreadline=libreadline,,readline"
 PACKAGECONFIG[libedit] = "-Dreadline=libedit,,libedit"
 PACKAGECONFIG[ovs] = "-Dovs=true,-Dovs=false,jansson"
@@ -97,7 +98,7 @@ PACKAGECONFIG[audit] = "-Dlibaudit=yes,-Dlibaudit=no"
 PACKAGECONFIG[selinux] = "-Dselinux=true,-Dselinux=false,libselinux"
 PACKAGECONFIG[vala] = "-Dvapi=true,-Dvapi=false"
 PACKAGECONFIG[dhcpcd] = "-Ddhcpcd=yes,-Ddhcpcd=no,,dhcpcd"
-PACKAGECONFIG[concheck] = "-Dconcheck=true,-Dconcheck=false,curl,"
+PACKAGECONFIG[concheck] = "-Dconcheck=true,-Dconcheck=false,curl"
 PACKAGECONFIG[nbft] = "-Dnbft=true,-Dnbft=false,libnvme"
 
 PACKAGES =+ " \
@@ -234,8 +235,7 @@ do_install:append() {
 }
 
 RCONFLICTS:${PN} = "connman"
-RDEPENDS:${PN} += "ethtool"
-RRECOMMENDS:${PN}-nmcli += "less"
+RDEPENDS:${PN} += "ethtool dbus less"
 
 PROVIDES += "networkmanager"
 
