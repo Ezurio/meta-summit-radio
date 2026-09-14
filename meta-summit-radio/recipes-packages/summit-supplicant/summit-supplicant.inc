@@ -86,7 +86,10 @@ do_install () {
     fi
 
     if ${@bb.utils.contains('DEPENDS', 'dbus', 'true', 'false', d)}; then
-        install -m 0644 -D -t "${D}${sysconfdir}/dbus-1/system.d" dbus/dbus-wpa_supplicant.conf
+        install -m 0644 -D -t "${D}/${sysconfdir}/dbus-1/system.d" \
+            "${S}/wpa_supplicant/dbus/dbus-wpa_supplicant.conf"
+        install -m 0644 -D -t "${D}/${datadir}/dbus-1/system-services" \
+            "${S}/wpa_supplicant/dbus/"*.service
 
         if [ "${SUPP_DBUS_P2P_ENABLE}" = "0" ]; then
             mkdir -p "${D}${sysconfdir}/wpa_supplicant"
@@ -96,10 +99,6 @@ do_install () {
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0644 -D -t "${D}${systemd_unitdir}/system" systemd/*.service
-
-        if ${@bb.utils.contains('DEPENDS', 'dbus', 'true', 'false', d)}; then
-            install -m 0644 -D -t "${D}${datadir}/dbus-1/system-services" dbus/*.service
-        fi
     fi
 }
 
