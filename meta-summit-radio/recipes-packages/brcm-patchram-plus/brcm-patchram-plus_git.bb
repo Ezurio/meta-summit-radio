@@ -11,8 +11,7 @@ require radio-stack-version.inc
 SRC_URI = "git://github.com/Ezurio/brcm_patchram.git;nobranch=1;protocol=https"
 SRC_URI:summit-internal = "git://github.com/rfpros/cp_linux-brcm_patchram.git;nobranch=1;protocol=https"
 
-SRCREV = "LRD-REL-${RADIO_VERSION}"
-PV = "${RADIO_VERSION}+git${SRCPV}"
+SRCREV = "025ec1a81769afbd9cb1498428a8255ac20c1d7e"
 
 S = "${SUMMIT_GIT_UNPACKDIR}"
 
