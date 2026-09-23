@@ -26,6 +26,10 @@ files="\
 
 files="${files} firmware/${ver}/summit-som8mp-radio-firmware-${ver}.tar.bz2"
 
+# MT320 specific files
+
+files="${files} firmware/${ver}/summit-mt320-sdio-firmware-${ver}.tar.bz2"
+
 
 for i in x86 x86_64 arm-eabi arm-eabihf aarch64 powerpc64-e5500
 do

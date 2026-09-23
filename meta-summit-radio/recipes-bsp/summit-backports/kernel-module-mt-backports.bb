@@ -1,5 +1,7 @@
 SUMMARY = "Summit Backports for Mediatek"
 
+MTK_BACKPORTS_BUILD_MTPREALLOC ?= "n"
+
 BACKPORTS_CONFIG = "${@bb.utils.contains('DISTRO_FEATURES','bluetooth','mt320','mt320_nbt',d)}"
 
 RCONFLICTS:${PN} = " \
@@ -13,3 +15,5 @@ RCONFLICTS:${PN} = " \
 
 require summit-backports.inc
 require radio-stack-version.inc
+
+EXTRA_OEMAKE += "CONFIG_BUILD_MTPREALLOC=${MTK_BACKPORTS_BUILD_MTPREALLOC}"
