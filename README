@@ -1,7 +1,7 @@
 This repository uses a branch architecture based on radio release.
 Each radio release is supported by a corresponding branch.
 
-The latest release is lrd-13.98.0.12.
+The latest release is lrd-14.8.0.13.
 
 The following radio families are supported by this release:
 
