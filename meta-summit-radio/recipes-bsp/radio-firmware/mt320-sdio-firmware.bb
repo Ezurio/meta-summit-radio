@@ -3,7 +3,7 @@ SUMMARY = "MT320 SDIO Firmware (MediaTek MT7961 chipset, WiFi+Bluetooth)"
 require radio-firmware.inc
 require radio-stack-version.inc
 
-RDEPENDS:${PN} += "${@'mtk-regdomain' if d.getVar('MTK_REGDOMAIN') else ''}"
+RDEPENDS:${PN} += "${@'mt-regdomain' if d.getVar('MT_REGDOMAIN') else ''}"
 
 do_install:append() {
 	install -d "${D}${nonarch_base_libdir}/firmware"
