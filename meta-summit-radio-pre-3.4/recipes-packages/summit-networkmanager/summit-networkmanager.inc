@@ -14,7 +14,6 @@ DEPENDS = " \
     udev \
     util-linux \
     libndp \
-    libnewt \
     openssl \
     dbus \
     glib-2.0 \
@@ -42,7 +41,6 @@ NETWORKMANAGER_DHCP_DEFAULT ??= "internal"
 EXTRA_OEMESON = "\
     -Difcfg_rh=false \
     -Dtests=no \
-    -Dnmtui=true \
     -Dudev_dir=${nonarch_base_libdir}/udev \
     -Dlibpsl=false \
     -Dqt=false \
@@ -76,8 +74,8 @@ inherit ${@bb.utils.contains('PACKAGECONFIG', 'nmcli', 'bash-completion', '', d)
 inherit ${@bb.utils.contains('PACKAGECONFIG', 'vala', 'vala', '', d)}
 
 PACKAGECONFIG[systemd] = "\
-    -Dsystemdsystemunitdir=${systemd_unitdir}/system -Dsession_tracking=systemd,\
-    -Dsystemdsystemunitdir=no -Dsystemd_journal=false -Dsession_tracking=no\
+    -Dsystemdsystemunitdir=${systemd_unitdir}/system -Dsession_tracking=systemd -Dsystemdsystemgeneratordir=${systemd_unitdir}/system-generators,
+    -Dsystemdsystemunitdir=no -Dsystemd_journal=false -Dsession_tracking=no -Dsystemdsystemgeneratordir=no\
 "
 PACKAGECONFIG[polkit] = "-Dpolkit=true,-Dpolkit=false,polkit"
 PACKAGECONFIG[bluez5] = "-Dbluez5_dun=true,-Dbluez5_dun=false,bluez5"
@@ -92,6 +90,7 @@ PACKAGECONFIG[wifi] = "-Dwext=false -Dwifi=true,-Dwext=false -Dwifi=false,,wpa-s
 PACKAGECONFIG[ifupdown] = "-Difupdown=true,-Difupdown=false"
 PACKAGECONFIG[cloud-setup] = "-Dnm_cloud_setup=true,-Dnm_cloud_setup=false"
 PACKAGECONFIG[nmcli] = "-Dnmcli=true,-Dnmcli=false"
+PACKAGECONFIG[nmtui] = "-Dnmtui=true,-Dnmtui=false,libnewt"
 PACKAGECONFIG[readline] = "-Dreadline=libreadline,,readline"
 PACKAGECONFIG[libedit] = "-Dreadline=libedit,,libedit"
 PACKAGECONFIG[ovs] = "-Dovs=true,-Dovs=false,jansson"
@@ -99,7 +98,7 @@ PACKAGECONFIG[audit] = "-Dlibaudit=yes,-Dlibaudit=no"
 PACKAGECONFIG[selinux] = "-Dselinux=true,-Dselinux=false,libselinux"
 PACKAGECONFIG[vala] = "-Dvapi=true,-Dvapi=false"
 PACKAGECONFIG[dhcpcd] = "-Ddhcpcd=yes,-Ddhcpcd=no,,dhcpcd"
-PACKAGECONFIG[concheck] = "-Dconcheck=true,-Dconcheck=false,curl,"
+PACKAGECONFIG[concheck] = "-Dconcheck=true,-Dconcheck=false,curl"
 PACKAGECONFIG[nbft] = "-Dnbft=true,-Dnbft=false,libnvme"
 
 PACKAGES =+ " \
@@ -236,8 +235,7 @@ do_install_append() {
 }
 
 RCONFLICTS_${PN} = "connman"
-RDEPENDS_${PN} += "ethtool"
-RRECOMMENDS_${PN}-nmcli += "less"
+RDEPENDS_${PN} += "ethtool dbus less"
 
 PROVIDES += "networkmanager"
 

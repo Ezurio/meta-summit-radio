@@ -74,8 +74,8 @@ inherit ${@bb.utils.contains('PACKAGECONFIG', 'nmcli', 'bash-completion', '', d)
 inherit ${@bb.utils.contains('PACKAGECONFIG', 'vala', 'vala', '', d)}
 
 PACKAGECONFIG[systemd] = "\
-    -Dsystemdsystemunitdir=${systemd_unitdir}/system -Dsession_tracking=systemd,\
-    -Dsystemdsystemunitdir=no -Dsystemd_journal=false -Dsession_tracking=no\
+    -Dsystemdsystemunitdir=${systemd_unitdir}/system -Dsession_tracking=systemd -Dsystemdsystemgeneratordir=${systemd_unitdir}/system-generators,
+    -Dsystemdsystemunitdir=no -Dsystemd_journal=false -Dsession_tracking=no -Dsystemdsystemgeneratordir=no\
 "
 PACKAGECONFIG[polkit] = "-Dpolkit=true,-Dpolkit=false,polkit"
 PACKAGECONFIG[bluez5] = "-Dbluez5_dun=true,-Dbluez5_dun=false,bluez5"
