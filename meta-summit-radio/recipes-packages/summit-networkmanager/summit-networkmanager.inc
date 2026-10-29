@@ -100,6 +100,7 @@ PACKAGECONFIG[vala] = "-Dvapi=true,-Dvapi=false"
 PACKAGECONFIG[dhcpcd] = "-Ddhcpcd=yes,-Ddhcpcd=no,,dhcpcd"
 PACKAGECONFIG[concheck] = "-Dconcheck=true,-Dconcheck=false,curl"
 PACKAGECONFIG[nbft] = "-Dnbft=true,-Dnbft=false,libnvme"
+PACKAGECONFIG[clat] = "-Dclat=true,-Dclat=false,libbpf"
 
 PACKAGES =+ " \
     ${PN}-adsl \
@@ -192,6 +193,7 @@ FILES:${PN} += " \
     ${datadir}/dbus-1 \
     ${nonarch_base_libdir}/udev/* \
     ${systemd_system_unitdir} \
+    ${systemd_unitdir}/system-generators \
 "
 
 RRECOMMENDS:${PN} += "\

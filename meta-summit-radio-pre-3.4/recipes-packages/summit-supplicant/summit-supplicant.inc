@@ -3,7 +3,7 @@ SECTION = "Wireless"
 LICENSE = "BSD-3-Clause & Ezurio"
 NO_GENERIC_LICENSE[Ezurio] = "LICENSE.ezurio"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5ebcb90236d1ad640558c3d3cd3035df \
-                    file://README;beginline=1;endline=56;md5=6e4b25e7d74bfc44a32ba37bdf5210a6 \
+                    file://README;beginline=1;endline=56;md5=155e35cb3d6ab0d6a17524f48f4e761c \
                     file://wpa_supplicant/wpa_supplicant.c;beginline=1;endline=12;md5=f5ccd57ea91e04800edb88267bf8eae4 \
                     file://LICENSE.ezurio;md5=fd3dd0630b215465b6f50540642d5b93 \
                     "
