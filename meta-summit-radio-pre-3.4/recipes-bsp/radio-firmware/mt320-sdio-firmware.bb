@@ -1,5 +1,9 @@
 SUMMARY = "MT320 SDIO Firmware (MediaTek MT7961 chipset, WiFi+Bluetooth)"
 
+LICENSE += "& MEDIATEK"
+NO_GENERIC_LICENSE[MEDIATEK] = "LICENSE.mediatek"
+LIC_FILES_CHKSUM += "file://LICENSE.mediatek;md5=7c1976b63217d76ce47d0a11d8a79cf2"
+
 require radio-firmware.inc
 require radio-stack-version.inc
 
